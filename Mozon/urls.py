@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("MozonApp.urls"))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('home/', include('users.urls')),
+    path('', include('MozonApp.urls'))
 ]
