@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    {% for product in products %}
+    {% for product, photo in products %}
     <div>{{product.name}}</div>
     <div>{{product.cost}}</div>
     <div>{{product.specifications}}</div>
     <div>{{product.description}}</div>
     <div>{{product.manufacturer.name}}</div>
-    <img src="">{{product.picture}}</img>
+    <img src="static/MozonApp/media_root{{photo}}"></img>
     <div>{{product.category.name}}</div>
     {% endfor %} 
 </body>
