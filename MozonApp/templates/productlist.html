@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="post">
+        {{ form }}
+        <input type="submit" value="send">
+    </form>
     {% for product, photo in products %}
     <div>{{product.name}}</div>
     <div>{{product.cost}}</div>
