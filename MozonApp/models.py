@@ -8,8 +8,14 @@ class Manufacturer(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def __str__(self) -> str:
+        return self.name
+
 class Сategory(models.Model):
     name = models.CharField(max_length=255)
+
+    def __str__(self) -> str:
+        return self.name
     
     def __str__(self) -> str:
         return self.name

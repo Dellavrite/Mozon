@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
+<<<<<<< HEAD
     <form method="post">
         {% csrf_token %}
             {% if user.is_authenticated %}
@@ -33,5 +34,22 @@
                 <a href="{% url 'login' %}">Login</a>
             {% endif %}
     </form>
+=======
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="send">
+    </form>
+    {% for product, photo in products %}
+    <div>{{product.name}}</div>
+    <div>{{product.cost}}</div>
+    <div>{{product.specifications}}</div>
+    <div>{{product.description}}</div>
+    <div>{{product.manufacturer.name}}</div>
+    <img src="static/MozonApp/media_root{{photo}}"></img>
+    <div>{{product.category.name}}</div>
+    {% endfor %} 
+>>>>>>> origin/main
 </body>
 </html>
