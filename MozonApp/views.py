@@ -13,15 +13,19 @@ class ProductListView(View):
                       context={'products': zip(objs, objs_photo), 'form': forms.ProductForm})
 
     def post(self, request):
-        data = forms.ProductForm(request.POST)
-        model = Product.objects.create()
+        data = forms.ProductForm(request.POST, request.FILES)
+        if data.is_valid():
+            model = Product.objects.create(
+                name = data.cleaned_data["name"],
+                cost = data.cleaned_data["cost"],
+                specifications = data.cleaned_data["specifications"],
+                description = data.cleaned_data["description"],
+                manufacturer = data.cleaned_data["manufacturer"],
+                picture = data.cleaned_data["picture"],
+                category = data.cleaned_data["category"],
+            )
 
-        model.name = data.cleaned_data["name"]
-        model.cost = data.cleaned_data["cost"]
-        model.specifications = data.cleaned_data["specifications"]
-        model.description = data.cleaned_data["description"]      
-        model.manufacturer = data.cleaned_data["manufacturer"]    
-        model.picture = data.cleaned_data["picture"]
-        model.category = data.cleaned_data["category"]
-
-        model.save()
+            model.save()
+            return self.get(request)
+        else:
+            return self.get(request)

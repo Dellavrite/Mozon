@@ -12,6 +12,6 @@ fields = [
 
 text = ""
 for i in fields:
-    text += f'model.{i} = data.cleaned_data["{i}"]\n'
+    text += f'{i} = data.cleaned_data["{i}"],\n'
 
 print(text)
