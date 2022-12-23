@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelChoiceField
 from .models import *
+from . import models
 
 
 class ProductForm(forms.Form):
@@ -11,6 +12,12 @@ class ProductForm(forms.Form):
     manufacturer = forms.ModelChoiceField(models.Manufacturer.objects)
     picture = forms.ImageField()
     category = forms.ModelChoiceField(models.Сategory.objects)
+
+
+class ProductModelForm(forms.ModelForm):
+    class Meta:
+        model = models.Product
+        fields = '__all__'
 
 
 class OrderForm(forms.Form):
