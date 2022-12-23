@@ -28,13 +28,12 @@
 }
 
 .product-photo {
-    position: relative;
-    padding-bottom: 100%;
     overflow: hidden;
+    width: 80%;
+    height: auto;
 }
 
 .product-photo {
-	position: absolute;
 	margin: auto;
 	transition: transform .4s ease-out;
 }

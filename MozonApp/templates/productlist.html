@@ -10,46 +10,38 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
-<<<<<<< HEAD
-    <form method="post">
-        {% csrf_token %}
-            {% if user.is_authenticated %}
-                <ul class="products clearfix">
-                    <li class="product-wrapper">
-                        {% for product in products %}
-                            <div>
-                                <p><mark>Название товара: </mark>{{product.name}}</p>
-                                <p><mark>Стоимость продукта: </mark>{{product.cost}}</p>
-                                <p><mark>Характеристики: </mark>{{product.specifications}}</p>
-                                <p><mark>Описание: </mark>{{product.description}}</p>
-                                <p><mark>Производитель: </mark>{{product.manufacturer.name}}</p>
-                                <img class="product-photo" src="">{{product.picture}}</img>
-                                <p><mark>Категория: </mark>{{product.category.name}}</p>
-                            </div>
-                        {% endfor %} 
-                    </li>
-                </ul>
-            {% else %}
+        {% if user.is_authenticated %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for item in form %}
+                    {{ item.label_tag }} {{ item }} <br>
+                {% endfor %}
+                <input type="submit" value="send">
+            </form>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
                 <a href="{% url 'signup' %}">Sign Up</a>
                 <a href="{% url 'login' %}">Login</a>
-            {% endif %}
-    </form>
-=======
-<body>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="send">
-    </form>
-    {% for product, photo in products %}
-    <div>{{product.name}}</div>
-    <div>{{product.cost}}</div>
-    <div>{{product.specifications}}</div>
-    <div>{{product.description}}</div>
-    <div>{{product.manufacturer.name}}</div>
-    <img src="static/MozonApp/media_root{{photo}}"></img>
-    <div>{{product.category.name}}</div>
-    {% endfor %} 
->>>>>>> origin/main
+            </form>
+        {% endif %}
+    <ul class="products clearfix">
+        <li class="product-wrapper">
+            {% for product, photo in products %}
+                <div>
+                    <p><mark>Название товара: </mark>{{product.name}}</p>
+                    <p><mark>Стоимость продукта: </mark>{{product.cost}}</p>
+                    <p><mark>Характеристики: </mark>{{product.specifications}}</p>
+                    <p><mark>Описание: </mark>{{product.description}}</p>
+                    <p><mark>Производитель: </mark>{{product.manufacturer.name}}</p>
+                    <img class="product-photo" src="static/MozonApp/media_root{{photo}}"></img>
+                    <p><mark>Категория: </mark>{{product.category.name}}</p>
+                    {% if user.is_authenticated %}
+                    <a href="{{ product.pk }}/">edit</a>
+                    {% endif %}
+                </div>
+            {% endfor %} 
+        </li>
+    </ul>
 </body>
 </html>

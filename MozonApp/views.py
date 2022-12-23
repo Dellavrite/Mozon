@@ -35,9 +35,7 @@ class ProductView(View):
         form = forms.ProductModelForm(request.POST, request.FILES, instance=model)
         form.save()
 
-        return render(request, 'products/product.html', context={
-            'form': form
-        })
+        return redirect('/')
 
 
 def deleteProduct(request, pk):

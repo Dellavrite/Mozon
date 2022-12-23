@@ -12,7 +12,7 @@
         {% for item in form %}
             {{ item.label_tag }} {{ item }} <br>
         {% endfor %}
-        <input type="submit" value="send">
+        <input type="submit" value="edit">
     </form>
     <form action="delete/" method="get">
         {% csrf_token %}
