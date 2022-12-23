@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,8 @@ SECRET_KEY = 'django-insecure-7c!hmfz7*m4zx&^0=gr)z264jq5&ng=(5nsu@vu^iu07mo@ysc
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+MEDIA_ROOT = BASE_DIR / "MozonApp/static/MozonApp/media_root"
 
 
 # Application definition
