@@ -1,16 +1,24 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Отправить">
-    </form>
+    {% if user.is_authenticated %}
+        <form class="form" action="" method="POST">
+            {% csrf_token %}
+            <div class="div">
+                {{ form }}
+                <input class="input" type="submit" value="Отправить">
+            </div>
+        </form>
+    {% endif %}
 </body>
 </html>

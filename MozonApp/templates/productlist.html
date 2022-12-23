@@ -1,20 +1,37 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
-<body>
-    {% for product in products %}
-    <div>{{product.name}}</div>
-    <div>{{product.cost}}</div>
-    <div>{{product.specifications}}</div>
-    <div>{{product.description}}</div>
-    <div>{{product.manufacturer.name}}</div>
-    <img src="">{{product.picture}}</img>
-    <div>{{product.category.name}}</div>
-    {% endfor %} 
+    <form method="post">
+        {% csrf_token %}
+            {% if user.is_authenticated %}
+                <ul class="products clearfix">
+                    <li class="product-wrapper">
+                        {% for product in products %}
+                            <div>
+                                <p><mark>Название товара: </mark>{{product.name}}</p>
+                                <p><mark>Стоимость продукта: </mark>{{product.cost}}</p>
+                                <p><mark>Характеристики: </mark>{{product.specifications}}</p>
+                                <p><mark>Описание: </mark>{{product.description}}</p>
+                                <p><mark>Производитель: </mark>{{product.manufacturer.name}}</p>
+                                <img class="product-photo" src="">{{product.picture}}</img>
+                                <p><mark>Категория: </mark>{{product.category.name}}</p>
+                            </div>
+                        {% endfor %} 
+                    </li>
+                </ul>
+            {% else %}
+                <a href="{% url 'signup' %}">Sign Up</a>
+                <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+    </form>
 </body>
 </html>

@@ -1,18 +1,26 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    {% for order in orders %}
-    <div>{{order.product.name}}</div>
-    <div>{{order.products_count}}</div>
-    <div>{{order.price}}</div>
-    <div>{{order.person_name}}</div>
-    <div>{{order.phone}}</div>
-    {% endfor %} 
+    {% if user.is_authenticated %}
+        {% for order in orders %}
+            <div>
+                <p><mark>Название товара:</mark> {{order.product.name}}</p>
+                <p><mark>Количество:</mark> {{order.products_count}}</p>
+                <p><mark>Общая стоимость:</mark> {{order.price}}</p>
+                <p><mark>Заказчик:</mark> {{order.person_name}}</p>
+                <p><mark>Номер телефона:</mark> {{order.phone}}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

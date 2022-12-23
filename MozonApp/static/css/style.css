@@ -52,4 +52,35 @@
 	overflow: hidden;
 }
 
+div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    border: RGB(25, 125, 25) 2px ridge;
+    background: #fff
+}
 
+.input {
+    border-radius: 10px;
+    background: none;
+    margin-top: 5px;
+    width: 100px;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clearfix {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
